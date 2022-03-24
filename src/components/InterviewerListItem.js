@@ -17,11 +17,5 @@ export default function InterviewerListItem(props) {
       />
     {props.selected && props.name}
   </li>
-
-  // <li
-  //   className={interviewerListClass}
-  //   onClick={setInterviewer(id)}>
-  //     <h5 className="text--regular">{name}</h5>
-  //   </li>
   );
 }

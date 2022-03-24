@@ -13,8 +13,8 @@ import "./styles.scss";
       />
       {props.interview ? 
         <Show 
-          student={"Lydia Miller-Jones"}
-          interviewer={props.interviewer}
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.name}
         /> : <Empty />}
     </article>
   );

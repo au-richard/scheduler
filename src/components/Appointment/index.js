@@ -29,7 +29,7 @@ export default function Appointment(props) {
           onCancel={back}
           student={props.student}
           interview={props.interview}
-          interviewers={[]}
+          interviewers={props.interviewers}
         />
       )}
     </article>

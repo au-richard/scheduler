@@ -14,6 +14,15 @@ export default function Appointment(props) {
   const CREATE = "CREATE";
   const {mode, transition, back} = useVisualMode(props.interview ? SHOW : EMPTY)
 
+  const save = (name, interviewer) => {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    props.bookInterview(props.id , interview);
+    transition(SHOW);
+  }
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -30,6 +39,7 @@ export default function Appointment(props) {
           student={props.student}
           interview={props.interview}
           interviewers={props.interviewers}
+          onSave={(student, interviewer) => save(student, interviewer)}
         />
       )}
     </article>

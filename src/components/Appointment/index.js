@@ -44,18 +44,7 @@ export default function Appointment(props) {
       })
       .catch(error => transition(ERROR_DELETE, true));
   }
-
-  const edit = (props) => {
-    const interview = {
-      student: props.id,
-      interviewer: props.interviewer
-    };
-    transition(SAVING);
-    props.bookInterview(props.id , interview)
-      .then(() => {
-        transition(SHOW);
-      })
-  }
+  
   // console.log("## these are props", props);
   // console.log("index selectedInterview", props.interview.interviewer.id);
   

@@ -10,7 +10,7 @@ export default function useVisualMode(initial) {
       setHistory((prev) => [...prev, newMode]);
     }
   }
-
+  
   function back() {
     setHistory((prev) => [...prev.slice(0, prev.length - 1)]);
   }

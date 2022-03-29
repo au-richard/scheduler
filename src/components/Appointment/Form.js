@@ -20,7 +20,8 @@ export default function Form(props) {
     setStudent("")
     setInterviewer(null)
   }
-
+  // console.log("Form selected interviewer", props.selectedInterviewer);
+  console.log("these are props", props);
   return (
     <>
       <main className="appointment__card appointment__card--create">
@@ -38,6 +39,7 @@ export default function Form(props) {
           <InterviewerList
             interviewers={interviewers}
             value={interviewer}
+            interviewerSelected={props.interviewerSelected}
             onChange={setInterviewer}
           />
         </section>

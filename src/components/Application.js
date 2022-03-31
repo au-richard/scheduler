@@ -1,8 +1,36 @@
 import React from "react";
 
+import DayList from "./DayList";
+import Appointment from "components/Appointment";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import useApplicationData from "hooks/useApplicationData";
+
 import "components/Application.scss";
 
-export default function Application(props) {
+export default function Application() {
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
+
+  const dailyInterviewers = getInterviewersForDay(state, state.day);
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day).map(dailyAppointment => {
+    return (
+      <Appointment
+        key={dailyAppointment.id}
+        id={dailyAppointment.id}
+        time={dailyAppointment.time}
+        interview={getInterview(state, dailyAppointment.interview)}
+        interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
+      />
+    );
+  });
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -12,7 +40,13 @@ export default function Application(props) {
         alt="Interview Scheduler"
       />
       <hr className="sidebar__separator sidebar--centered" />
-      <nav className="sidebar__menu"></nav>
+      <nav className="sidebar__menu">
+      <DayList
+        days={state.days}
+        day={state.day}
+        setDay={setDay}
+      />
+      </nav>
       <img
         className="sidebar__lhl sidebar--centered"
         src="images/lhl.png"
@@ -20,7 +54,9 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {dailyAppointments
+          .concat(<Appointment key="last" time="5pm" />) 
+        }
       </section>
     </main>
   );

@@ -1,8 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-
 import "./DayListItem.scss";
-
 
 export default function DayListItem(props) {
   const dayListClass = classNames("day-list__item", {
@@ -19,7 +17,7 @@ export default function DayListItem(props) {
       return <h3 className="text--light">{props.spots} spots remaining</h3>;
     }
   } 
-  // (props.name)
+
   return (
     <li 
     className={dayListClass} 

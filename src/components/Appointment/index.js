@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Header from "./Header";
 import Empty from "./Empty";
 import Show from "./Show";
@@ -11,7 +11,6 @@ import useVisualMode from 'hooks/useVisualMode';
 import "./styles.scss";
 
 export default function Appointment(props) {
-  // console.log("## props", props);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -22,8 +21,8 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
   const {mode, transition, back} = useVisualMode(props.interview ? SHOW : EMPTY)
-  console.log("should return true when empty", !props.interview === true, props.interview, mode);
 
+  // Saving New Interview
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -44,12 +43,8 @@ export default function Appointment(props) {
       .then(() => {
         transition(EMPTY);
       })
-      .catch(error => transition(ERROR_DELETE, true));
+      .catch(() => transition(ERROR_DELETE, true));
   }
-
-  // console.log("## these are props", props);
-  // console.log("index selectedInterview", props.interview.interviewer.id);
-  
   return (
     <article className="appointment">
       <Header time={props.time} />

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
@@ -25,19 +24,17 @@ export default function useApplicationData() {
         spotCounter++;
       } 
     }
-    // dayObj.spotCounter = spotCounter;
+    // Updating spots in each dayObj
     const day = {...dayObj, spots: spotCounter}
 
-    // update days array 
+    // Updating days in sidebar with updated spots 
     const newDays = [...state.days]
     newDays[index] = day;
     // return an updated days array
-    console.log("New Days", newDays);
     return newDays;  
   }
 
   const bookInterview = (appointmentId, interview) => {
-    // console.log("This is id + interview", appointmentId, interview);
     const appointment = {
       ...state.appointments[appointmentId],
       interview: { ...interview }
@@ -46,10 +43,8 @@ export default function useApplicationData() {
       ...state.appointments,
       [appointmentId]: appointment
     };
-    console.log("state after book", state)
     return axios.put(`/api/appointments/${appointmentId}`, {interview})
       .then(() => {
-        // console.log("this is state", state);
         setState({
           ...state,
           appointments,
@@ -67,7 +62,6 @@ export default function useApplicationData() {
       ...state.appointments,
       [appointmentId]: appointment
     };
-    console.log("state after delete", state);
     return axios.delete(`/api/appointments/${appointmentId}`)
       .then(() => {
         setState({
@@ -91,11 +85,3 @@ export default function useApplicationData() {
 
   return {state, setDay, bookInterview, cancelInterview};
 }
-
-
-
-// axios.put()
-// .then(() => {
-//   const days = updateSpots();
-//   setState({...state, appointments, days: updateSpots(state, appointments, id) })
-// );

@@ -4,7 +4,7 @@ import axios from "axios";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
-import useApplicationData from "src/hooks/useApplicationData";
+import useApplicationData from "hooks/useApplicationData";
 
 import "components/Application.scss";
 
@@ -15,6 +15,8 @@ export default function Application(props) {
     bookInterview,
     cancelInterview
   } = useApplicationData();
+
+  console.log("Current spots", state.days);
 
   const dailyInterviewers = getInterviewersForDay(state, state.day);
 

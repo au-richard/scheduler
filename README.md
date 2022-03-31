@@ -28,7 +28,19 @@ npm run storybook
 ```
 
 ## Dev Dependencies
--Node Sass
--Prop Types
--React Hooks Testing Library
--React Test Renderer
+-node-sass
+-react-hooks-testing-library
+-react-test-renderer
+-axios
+-babel-loader
+-@babel/core
+-@storybook/addon-actions
+-@storybook/addon-backgrounds
+-@storybook/addon-links
+-@storybook/addons
+-@storybook/react
+-@testing-library/react-hooks
+-@testing-library/jest-dom
+-@testing-library/react
+
+

@@ -15,11 +15,9 @@ export default function useApplicationData() {
     // Finding if selectedDay.name and state.day match, assigning it to index if it matches
     const index = state.days.findIndex(selectedDay => selectedDay.name === state.day);
     const dayObj = state.days[index];
-    // calculate Spots
     let spotCounter = 0;
     for(const id of dayObj.appointments) {
       const appointment = appointments[id];
-      // checking if appointment interview is null
       if(appointment.interview === null) {
         spotCounter++;
       } 
@@ -30,7 +28,6 @@ export default function useApplicationData() {
     // Updating days in sidebar with updated spots 
     const newDays = [...state.days]
     newDays[index] = day;
-    // return an updated days array
     return newDays;  
   }
 

@@ -5,7 +5,7 @@ import InterviewerList from "components/InterviewerList"
 export default function Form(props) {
   const { onSave, onCancel, interviewers } = props
   const [student, setStudent] = useState(props.student || "")
-  const [interviewer, setInterviewer] = useState(props.interviewer || null)
+  const [interviewer, setInterviewer] = useState(props.interviewerSelected || null)
   const [error, setError] = useState("");
 
   const cancel = () => {
@@ -19,9 +19,13 @@ export default function Form(props) {
   }
 
   function validate() {
-    if (student === "") {
+    if (!student) {
       setError("Student name cannot be blank");
       return;
+    }
+    if(!interviewer) {
+      setError("Must select an interviewer");
+      return
     }
     setError("");
     props.onSave(student, interviewer);
@@ -45,7 +49,7 @@ export default function Form(props) {
           <InterviewerList
             interviewers={interviewers}
             value={interviewer}
-            interviewerSelected={props.interviewerSelected}
+            // interviewerSelected={props.interviewerSelected}
             onChange={setInterviewer}
           />
         </section>

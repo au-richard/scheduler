@@ -23,7 +23,7 @@ export default function DayListItem(props) {
     className={dayListClass} 
     onClick={props.setDay}>
       <h2 className="text--regular">{props.name}</h2>
-      {formatSpots()};
+      {formatSpots()}
     </li>
   );
 }

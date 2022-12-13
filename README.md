@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-Interview Scheduler is a React application that allows user to book and cancel interviews. This app combines a concise API with a WebSocket server to build a realtime experience.
+Interview Scheduler is a React application that allows users to book and cancel interviews. This app combines a concise API with a WebSocket server to build a realtime experience.
 
 ## Final Product
 
